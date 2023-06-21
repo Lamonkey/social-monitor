@@ -7,25 +7,6 @@ import time
 import threading
 
 
-class SherlockStream(Stream, io.StringIO):
-    def __init__():
-        super.__init__()
-
-    def __enter__(self):
-        pass
-
-
-def fake_stream():
-    for i in range(5):
-        print(i)
-        time.sleep(1)
-
-
-class sherlockStream(io.StringIO):
-    def __init__(self):
-        super().__init__()
-
-
 def run_sherlock_adapter() -> str:
     with redirect_stdout(io.StringIO(newline="\n")) as f:
         thread = threading.Thread(target=run_sherlock)
@@ -135,7 +116,8 @@ options_selected = []
 
 text_input = pn.widgets.TextInput(
     name='Text Input', placeholder='Enter username here...')
-check_box_group = [pn.widgets.Checkbox(name=key) for key, item in options.items()]
+check_box_group = [pn.widgets.Checkbox(name=key)
+                   for key, item in options.items()]
 
 sherlock_result = pn.widgets.Terminal(
     "Welcome to Sherlock Terminal, enter username to search/n",
