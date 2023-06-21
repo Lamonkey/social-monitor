@@ -120,7 +120,7 @@ check_box_group = [pn.widgets.Checkbox(name=key)
                    for key, item in options.items()]
 
 sherlock_result = pn.widgets.Terminal(
-    "Welcome to Sherlock Terminal, enter username to search/n",
+    "Welcome to Sherlock Terminal, enter username to search",
     options={"cursorBlink": True},
     height=300, sizing_mode='stretch_width'
 )
@@ -132,24 +132,20 @@ def run_sherlock_module(event):
     # add position arguments
     for user_name in text_input.value.split(" "):
         sys.argv.append(user_name)
-    # add options
     for check_box in check_box_group:
         if check_box.value:
             sys.argv.append(options[check_box.name]['arg'])
-    # sherlock_result.write(f'search: {text_input.value}')
-    # sherlock_result.write(f'args: {sys.argv}')
     for result in run_sherlock_adapter():
         sherlock_result.write(result)
-    # for check_box in check_box_group:
-    #     print(check_box.name, check_box.value)
 
-
+    
 sherlock_options = pn.GridBox(
     *check_box_group, ncols=3)
 run_button = pn.widgets.Button(name='Click me', button_type='primary')
-column1 = pn.Column('# Column', text_input, sherlock_options, run_button)
-column2 = pn.Column('# Column', sherlock_result)
-sherlock_app = pn.Row(column1, column2)
+column1 = pn.Column(text_input, sherlock_options, run_button)
+column2 = pn.Column(sherlock_result)
+help_column = pn.Column(*[pn.pane.Str(f"{key} \n{value['description']}") for key, value in options.items()])
+sherlock_app = pn.Column(pn.Row(column1, column2), help_column)
 
 run_button.on_click(run_sherlock_module)
 sherlock_app.servable()

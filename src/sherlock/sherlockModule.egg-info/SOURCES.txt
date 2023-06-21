@@ -1,3 +1,4 @@
+README.md
 setup.py
 src/sherlock/sherlockModule.egg-info/PKG-INFO
 src/sherlock/sherlockModule.egg-info/SOURCES.txt
