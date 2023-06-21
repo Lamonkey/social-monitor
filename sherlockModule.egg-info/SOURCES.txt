@@ -1,0 +1,17 @@
+setup.py
+sherlockModule.egg-info/PKG-INFO
+sherlockModule.egg-info/SOURCES.txt
+sherlockModule.egg-info/dependency_links.txt
+sherlockModule.egg-info/top_level.txt
+src/__init__.py
+src/adapter.py
+src/sherlock/__init__.py
+src/sherlock/__main__.py
+src/sherlock/notify.py
+src/sherlock/result.py
+src/sherlock/sherlock.py
+src/sherlock/sites.py
+src/sherlock/tests/__init__.py
+src/sherlock/tests/all.py
+src/sherlock/tests/base.py
+src/sherlock/tests/test_multiple_usernames.py
